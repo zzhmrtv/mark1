@@ -4,19 +4,18 @@
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>Legalno.USA — AI Immigration Preparation</title>
-<!-- Подключение оригинального шрифта Inter -->
 <link rel="preconnect" href="https://googleapis.com">
 <link rel="preconnect" href="https://gstatic.com" crossorigin>
-<link href="https://googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+<!-- Подключение шрифтов Inter для интерфейса и Newsreader для премиальных заголовков в стиле Claude -->
+<link href="https://googleapis.com/css2?family=Inter:wght@400;500;600&family=Newsreader:ital,opsz,wght@0,6..72,400;0,6..72,500;1,6..72,400&display=swap" rel="stylesheet">
 <style>
 :root {
-    --bg-dark: #030712;
-    --card-bg: rgba(15, 23, 42, 0.6);
-    --border-color: rgba(30, 41, 59, 0.7);
-    --primary: #2563eb;
-    --primary-glow: rgba(37, 99, 235, 0.15);
-    --text-main: #f8fafc;
-    --text-muted: #94a3b8;
+    --bg-dark: #191919; /* Фирменный глубокий темный цвет фона */
+    --card-bg: #222222;
+    --border-color: #333333;
+    --text-main: #E6E6E6;
+    --text-muted: #999999;
+    --input-bg: #262626;
 }
 
 *{
@@ -37,14 +36,14 @@ body{
     line-height: 1.5;
 }
 
-/* Фиксированная шапка */
+/* Навигация */
 .header-nav {
     position: fixed;
     top: 0;
     left: 0;
     width: 100%;
     z-index: 1000;
-    background: rgba(3, 7, 18, 0.7);
+    background: rgba(25, 25, 25, 0.8);
     backdrop-filter: blur(12px);
     -webkit-backdrop-filter: blur(12px);
     border-bottom: 1px solid var(--border-color);
@@ -53,7 +52,7 @@ body{
 .nav-container {
     max-width: 1200px;
     margin: 0 auto;
-    padding: 20px;
+    padding: 16px 20px;
     display: flex;
     justify-content: space-between;
     align-items: center;
@@ -61,248 +60,292 @@ body{
 
 .nav-logo {
     font-size: 16px;
-    color: #60a5fa;
-    font-weight: 800;
-    letter-spacing: 2px;
+    color: var(--text-main);
+    font-weight: 600;
+    letter-spacing: 1px;
     text-decoration: none;
+    display: flex;
+    align-items: center;
+    gap: 8px;
+}
+
+.nav-logo-icon {
+    color: #E27D60;
+    font-size: 18px;
 }
 
 .nav-btn {
-    padding: 10px 20px;
-    background: rgba(255,255,255,0.05);
+    padding: 8px 16px;
+    background: transparent;
     border: 1px solid var(--border-color);
-    border-radius: 10px;
+    border-radius: 8px;
     color: var(--text-main);
     text-decoration: none;
-    font-weight: 600;
+    font-weight: 500;
     font-size: 14px;
-    transition: 0.3s;
+    transition: 0.2s;
 }
 
 .nav-btn:hover {
-    background: var(--primary);
-    border-color: var(--primary);
-    box-shadow: 0 0 20px var(--primary-glow);
+    background: var(--card-bg);
+    border-color: #555555;
 }
 
-/* Главный экран */
+/* Главный экран в стиле Claude */
 .hero{
-    min-height:100vh;
-    display:flex;
-    align-items:center;
-    justify-content:center;
-    text-align:center;
-    padding: 140px 20px 80px;
-    background:
-        radial-gradient(circle at 50% 20%, rgba(37, 99, 235, 0.18), transparent 50%),
-        radial-gradient(circle at 10% 40%, rgba(96, 165, 250, 0.05), transparent 40%),
-        var(--bg-dark);
+    min-height: 100vh;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    padding: 120px 20px 60px;
 }
 
-.container{
-    max-width:1200px;
-    margin:auto;
-    padding:0 20px;
+.hero-content {
+    max-width: 480px;
     width: 100%;
-}
-
-.hero .logo{
-    display: inline-block;
-    font-size:14px;
-    color:#60a5fa;
-    margin-bottom:24px;
-    font-weight:700;
-    letter-spacing:3px;
-    background: rgba(96, 165, 250, 0.1);
-    padding: 6px 16px;
-    border-radius: 100px;
-    border: 1px solid rgba(96, 165, 250, 0.2);
+    margin: 0 auto;
+    text-align: center;
 }
 
 h1{
-    font-size:68px;
-    font-weight: 800;
-    line-height: 1.1;
-    margin-bottom:25px;
-    letter-spacing: -1px;
-}
-
-.gradient{
-    background: linear-gradient(90deg, #60a5fa, #3b82f6, #93c5fd);
-    -webkit-background-clip: text;
-    -webkit-text-fill-color: transparent;
-}
-
-.subtitle{
-    font-size:20px;
-    max-width:700px;
-    margin:auto;
-    color: var(--text-muted);
-    margin-bottom:40px;
-    line-height: 1.6;
-}
-
-.btn{
-    display:inline-block;
-    padding:18px 36px;
-    background: var(--primary);
-    border-radius:14px;
-    text-decoration:none;
-    color:white;
-    font-weight:700;
-    font-size: 16px;
-    transition: .3s cubic-bezier(0.4, 0, 0.2, 1);
-    box-shadow: 0 4px 25px var(--primary-glow);
-}
-
-.btn:hover{
-    transform:translateY(-3px);
-    box-shadow: 0 8px 35px rgba(37, 99, 235, 0.4);
-    background: #1d4ed8;
-}
-
-/* Секции */
-.section{
-    padding:120px 20px;
-}
-
-.section-title{
-    text-align:center;
-    font-size:44px;
-    font-weight: 800;
-    margin-bottom:16px;
+    font-family: 'Newsreader', Georgia, serif;
+    font-size: 48px;
+    font-weight: 400;
+    line-height: 1.15;
+    margin-bottom: 16px;
+    color: #F5F5F3;
     letter-spacing: -0.5px;
 }
 
-.section-sub{
-    text-align:center;
+h1 span.italic {
+    font-style: italic;
+}
+
+.subtitle{
+    font-size: 17px;
     color: var(--text-muted);
-    max-width:600px;
-    margin:auto;
-    margin-bottom:64px;
-    font-size: 18px;
+    margin-bottom: 40px;
+    line-height: 1.5;
+    font-weight: 400;
+}
+
+/* Форма авторизации/захвата со скриншота */
+.auth-box {
+    border: 1px solid var(--border-color);
+    border-radius: 24px;
+    padding: 32px 24px 24px;
+    background: transparent;
+    margin-bottom: 24px;
+}
+
+.google-btn {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 12px;
+    width: 100%;
+    padding: 14px;
+    background: transparent;
+    border: 1px solid var(--border-color);
+    border-radius: 12px;
+    color: var(--text-main);
+    text-decoration: none;
+    font-size: 15px;
+    font-weight: 500;
+    transition: background 0.2s;
+    cursor: pointer;
+}
+
+.google-btn:hover {
+    background: rgba(255, 255, 255, 0.03);
+}
+
+.google-icon {
+    width: 18px;
+    height: 18px;
+}
+
+.divider {
+    font-size: 11px;
+    color: var(--text-muted);
+    text-transform: uppercase;
+    letter-spacing: 1.5px;
+    margin: 20px 0;
+}
+
+.input-email {
+    width: 100%;
+    padding: 14px;
+    background: var(--input-bg);
+    border: 1px solid var(--border-color);
+    border-radius: 12px;
+    color: var(--text-main);
+    font-size: 15px;
+    margin-bottom: 16px;
+    outline: none;
+    transition: border-color 0.2s;
+}
+
+.input-email:focus {
+    border-color: #555555;
+}
+
+.input-email::placeholder {
+    color: #555555;
+}
+
+.submit-btn {
+    width: 100%;
+    padding: 14px;
+    background: #F5F5F3;
+    border: none;
+    border-radius: 12px;
+    color: #191919;
+    font-size: 15px;
+    font-weight: 600;
+    cursor: pointer;
+    transition: opacity 0.2s;
+}
+
+.submit-btn:hover {
+    opacity: 0.9;
+}
+
+.terms-text {
+    font-size: 12px;
+    color: #777777;
+    line-height: 1.5;
+    margin-top: 20px;
+    padding: 0 10px;
+}
+
+.terms-text a {
+    color: #777777;
+    text-decoration: underline;
+}
+
+/* Секция контента */
+.section{
+    padding: 100px 20px;
+    border-top: 1px solid var(--border-color);
+    background: #151515;
+}
+
+.section-title{
+    text-align: center;
+    font-family: 'Newsreader', Georgia, serif;
+    font-size: 38px;
+    font-weight: 400;
+    margin-bottom: 12px;
+}
+
+.section-sub{
+    text-align: center;
+    color: var(--text-muted);
+    max-width: 500px;
+    margin: auto;
+    margin-bottom: 56px;
+    font-size: 16px;
 }
 
 /* Сетка карточек */
 .grid{
-    display:grid;
-    grid-template-columns:repeat(auto-fit,minmax(320px,1fr));
-    gap:24px;
+    max-width: 1100px;
+    margin: 0 auto;
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+    gap: 20px;
 }
 
 .card{
-    background: var(--card-bg);
-    border:1px solid var(--border-color);
-    padding:36px;
-    border-radius:24px;
-    backdrop-filter: blur(8px);
-    -webkit-backdrop-filter: blur(8px);
-    transition: .4s cubic-bezier(0.4, 0, 0.2, 1);
-    opacity: 0;
-    transform: translateY(20px);
-}
-
-/* Класс для анимации появления через JS */
-.card.visible {
-    opacity: 1;
-    transform: translateY(0);
+    background: var(--bg-dark);
+    border: 1px solid var(--border-color);
+    padding: 28px;
+    border-radius: 16px;
+    transition: border-color 0.2s;
 }
 
 .card:hover{
-    transform: translateY(-8px) !important;
-    border-color: #3b82f6;
-    background: rgba(15, 23, 42, 0.8);
-    box-shadow: 0 12px 40px rgba(0, 0, 0, 0.3);
-}
-
-.card .icon-wrapper {
-    font-size: 28px;
-    margin-bottom: 20px;
-    display: inline-block;
+    border-color: #444444;
 }
 
 .card h3{
-    margin-bottom:12px;
-    font-size:20px;
-    font-weight: 700;
+    margin-bottom: 10px;
+    font-size: 18px;
+    font-weight: 600;
     color: var(--text-main);
+    display: flex;
+    align-items: center;
+    gap: 10px;
 }
 
 .card p{
     color: var(--text-muted);
-    font-size: 15px;
-    line-height: 1.6;
+    font-size: 14.5px;
+    line-height: 1.5;
 }
 
 /* Блок статистики */
 .stats{
-    display:grid;
-    grid-template-columns:repeat(auto-fit,minmax(240px,1fr));
-    gap:24px;
-    margin-top:80px;
+    max-width: 1100px;
+    margin: 60px auto 0;
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+    gap: 20px;
 }
 
 .stat{
-    text-align:center;
-    padding:32px;
-    background: var(--card-bg);
+    text-align: center;
+    padding: 24px;
+    background: var(--bg-dark);
     border: 1px solid var(--border-color);
-    border-radius:20px;
-    backdrop-filter: blur(8px);
+    border-radius: 16px;
 }
 
 .stat h2{
-    font-size:48px;
-    font-weight: 800;
-    color: #60a5fa;
+    font-family: 'Newsreader', Georgia, serif;
+    font-size: 40px;
+    font-weight: 400;
+    color: var(--text-main);
     margin-bottom: 4px;
 }
 
 .stat p {
     color: var(--text-muted);
-    font-weight: 500;
-}
-
-/* Секция CTA */
-.cta{
-    padding:140px 20px;
-    text-align:center;
-    background: radial-gradient(circle at 50% 50%, rgba(37, 99, 235, 0.1), transparent 60%);
-}
-
-.footer{
-    padding:40px;
-    text-align:center;
-    border-top:1px solid var(--border-color);
-    color:#475569;
     font-size: 14px;
 }
 
+/* Подвал и дисклеймер */
+.footer-section {
+    padding: 60px 20px;
+    text-align: center;
+    border-top: 1px solid var(--border-color);
+}
+
 .warning{
-    margin-top:40px;
-    font-size:13px;
-    color:#475569;
-    max-width: 600px;
+    font-size: 12px;
+    color: #555555;
+    max-width: 550px;
     margin-inline: auto;
     line-height: 1.6;
+    margin-bottom: 30px;
+}
+
+.footer{
+    color: #555555;
+    font-size: 13px;
 }
 
 /* Адаптивность */
 @media(max-width:768px){
     h1{
-        font-size:42px;
+        font-size: 38px;
     }
     .section-title{
-        font-size:32px;
-    }
-    .subtitle{
-        font-size:16px;
+        font-size: 30px;
     }
     .section {
-        padding: 80px 20px;
-    }
-    .grid {
-        grid-template-columns: 1fr;
+        padding: 60px 20px;
     }
 }
 </style>
@@ -311,108 +354,66 @@ h1{
 
 <header class="header-nav">
     <div class="nav-container">
-        <a href="#" class="nav-logo">LEGALNO.USA</a>
-        <a href="#" class="nav-btn">Start Trial</a>
+        <a href="#" class="nav-logo">
+            <span class="nav-logo-icon">✳</span> LEGALNO.USA
+        </a>
+        <a href="#start" class="nav-btn">Sign In</a>
     </div>
 </header>
 
-<section class="hero">
-    <div class="container">
-        <div class="logo">LEGALNO.USA</div>
-        <h1>Prepare Your Immigration Case <br><span class="gradient">With AI</span></h1>
+<section class="hero" id="start">
+    <div class="hero-content">
+        <h1>Prepare fast, <br><span class="italic">submit faster</span></h1>
         <p class="subtitle">
-            Practice asylum interviews, prepare work permit applications, organize documents and get immigration guidance in one platform.
+            Practice asylum interviews, prepare work permit applications, and organize documents with your AI assistant.
         </p>
-        <a href="#" class="btn">Start Free Trial</a>
+        
+        <!-- Контейнер формы по дизайну из скриншота -->
+        <div class="auth-box">
+            <button class="google-btn" onclick="alert('Google Auth Integration')">
+                <!-- Встроенная SVG иконка Google -->
+                <svg class="google-icon" viewBox="0 0 24 24" xmlns="http://w3.org">
+                    <path d="M22.56 12.25c0-.78-.07-1.53-.2-2.25H12v4.26h5.92c-.26 1.37-1.04 2.53-2.21 3.31v2.77h3.57c2.08-1.92 3.28-4.74 3.28-8.09z" fill="#4285F4"/>
+                    <path d="M12 23c2.97 0 5.46-.98 7.28-2.66l-3.57-2.77c-.98.66-2.23 1.06-3.71 1.06-2.86 0-5.29-1.93-6.16-4.53H2.18v2.84C3.99 20.53 7.7 23 12 23z" fill="#34A853"/>
+                    <path d="M5.84 14.09c-.22-.66-.35-1.36-.35-2.09s.13-1.43.35-2.09V7.06H2.18C1.43 8.55 1 10.22 1 12s.43 3.45 1.18 4.94l2.85-2.22.81-.63z" fill="#FBBC05"/>
+                    <path d="M12 5.38c1.62 0 3.06.56 4.21 1.64l3.15-3.15C17.45 2.09 14.97 1 12 1 7.7 1 3.99 3.47 2.18 7.06l3.66 2.84c.87-2.6 3.3-4.52 6.16-4.52z" fill="#EA4335"/>
+                </svg>
+                Continue with Google
+            </button>
+            
+            <div class="divider">or</div>
+            
+            <input type="email" class="input-email" placeholder="Enter your email">
+            <button class="submit-btn" onclick="alert('Check your email!')">Continue with email</button>
+            
+            <div class="terms-text">
+                By continuing, you acknowledge Legalno.USA's <a href="#">Privacy Policy</a> and agree to get occasional promotional emails and notifications.
+            </div>
+        </div>
     </div>
 </section>
 
 <section class="section">
     <div class="container">
-        <h2 class="section-title">Everything You Need</h2>
+        <h2 class="section-title">Everything you need</h2>
         <p class="section-sub">Designed for immigrants preparing their future in the United States.</p>
         
         <div class="grid">
             <div class="card">
-                <div class="icon-wrapper">🎤</div>
-                <h3>Interview Simulator</h3>
+                <h3>🎤 Interview Simulator</h3>
                 <p>Talk to an AI asylum officer and practice realistic interview scenarios.</p>
             </div>
             <div class="card">
-                <div class="icon-wrapper">📝</div>
-                <h3>Work Permit Assistant</h3>
+                <h3>📝 Work Permit Assistant</h3>
                 <p>Get step-by-step guidance for preparing your work permit application.</p>
             </div>
             <div class="card">
-                <div class="icon-wrapper">🤖</div>
-                <h3>Immigration AI</h3>
+                <h3>🤖 Immigration AI</h3>
                 <p>Ask questions and receive instant immigration guidance.</p>
             </div>
             <div class="card">
-                <div class="icon-wrapper">📂</div>
-                <h3>Document Center</h3>
+                <h3>📂 Document Center</h3>
                 <p>Store and organize all immigration documents in one place.</p>
             </div>
             <div class="card">
-                <div class="icon-wrapper">📅</div>
-                <h3>Timeline Tracker</h3>
-                <p>Track deadlines, interviews and important milestones.</p>
-            </div>
-            <div class="card">
-                <div class="icon-wrapper">📊</div>
-                <h3>AI Feedback</h3>
-                <p>Receive feedback and improve your interview performance.</p>
-            </div>
-        </div>
-
-        <div class="stats">
-            <div class="stat">
-                <h2>24/7</h2>
-                <p>AI Assistance</p>
-            </div>
-            <div class="stat">
-                <h2>100%</h2>
-                <p>Online Access</p>
-            </div>
-            <div class="stat">
-                <h2>1</h2>
-                <p>Unified Platform</p>
-            </div>
-        </div>
-    </div>
-</section>
-
-<section class="cta">
-    <div class="container">
-        <h2 class="section-title">Be Ready Before Your Interview</h2>
-        <p class="section-sub">Prepare smarter with AI-powered interview simulations, document management and immigration guidance.</p>
-        <a href="#" class="btn">Get Started Today</a>
-        <p class="warning">
-            Legalno.USA is a document preparation and educational platform. It is not a law firm and does not provide legal representation.
-        </p>
-    </div>
-</section>
-
-<footer class="footer">
-    © 2026 Legalno.USA — All Rights Reserved
-</footer>
-
-<script>
-// Скрипт для красивого появления карточек при скролле (Scroll Reveal)
-const cards = document.querySelectorAll('.card');
-
-const observerOptions = {
-    root: null,
-    threshold: 0.1,
-    rootMargin: "0px 0px -50px 0px"
-};
-
-const observer = new IntersectionObserver((entries) => {
-    entries.forEach(entry => {
-        if (entry.isIntersecting) {
-            entry.target.classList.add('visible');
-            observer.unobserve(entry.target); // Чтобы анимация была один раз
-        }
-    });
-}, observerOptions);
-
+                <h3>📅 Timeline Tracker</h3>
